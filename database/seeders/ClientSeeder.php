@@ -27,7 +27,7 @@ class ClientSeeder extends Seeder
 
       $clients = [
             ['name' => 'John Doe', 'email' => 'john.doe@example.com', 'active' => 1,'password'=>Hash::make('1234567'),'email_verified_at'=>now()],
-            ['name' => 'Jane Smith', 'email' => 'jane.smith@example.com', 'active' => 1,'password'=>Hash::make('1234567'),'email_verified_at'=>now()],
+            ['name' => 'Jane Smith', 'email' => 'crossbill879@pixoledge.net', 'active' => 1,'password'=>Hash::make('1234567'),'email_verified_at'=>now()],
             ['name' => 'Bob Johnson', 'email' => 'bob.johnson@example.com', 'active' => 1,'password'=>Hash::make('1234567'),'email_verified_at'=>null],
         ];
 
