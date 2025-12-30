@@ -9,6 +9,7 @@ import InputText from 'primevue/inputtext';
 import InputIcon from 'primevue/inputicon';
 import IconField from 'primevue/iconfield';
 import { FilterMatchMode } from '@primevue/core/api';
+import WebsiteMonitorListener from '@/components/Listeners/WebsiteMonitorListener.vue';
 
 const props = defineProps({
     clients: {
@@ -285,6 +286,7 @@ const clearClientFilter = () => {
         </div>
         <!-- Container-fluid Ends-->
     </div>
+    <WebsiteMonitorListener />
 </template>
 
 <style scoped>
