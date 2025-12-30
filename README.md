@@ -132,7 +132,7 @@ npm install --save laravel-echo pusher-js
 
 ### 7. Run Migrations
 ```bash
-php artisan migrate
+php artisan migrate --seed 
 
 # Optional: Run seeders for demo data
 php artisan db:seed
