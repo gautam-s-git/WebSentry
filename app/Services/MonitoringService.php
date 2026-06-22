@@ -39,19 +39,16 @@ class MonitoringService
         }
 
         // Insert into database
-       MonitoringProcessLog::create([
-            'client_id' => $clientId,
-            'website_id' => $websiteId,
+        MonitoringProcessLog::create([
+            'client_id'     => $clientId,
+            'website_id'    => $websiteId,
             'last_monitored' => now(),
-            'status' => $isActive ? 'up' : 'down',
-            'status_code' => $statusCode,
+            'status'        => $isActive ? 'up' : 'down',
+            'status_code'   => $statusCode,
             'response_time' => $responseTime,
             'failure_error' => $failureError,
             'response_body' => $responseBody,
         ]);
-
-
-
 
 
         return $isActive;

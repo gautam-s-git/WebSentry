@@ -14,8 +14,15 @@ class MailNotificationService
     {
         $isDelivered = false;
         $failureMessage = null;
-        $emailSubject = '🔴 Website Down Alert - ' . $monitoringProcessLog->website->name;
-        $emailMessage = 'Your website ' . $monitoringProcessLog->website->name . ' is currently DOWN.';
+        $isDown = $monitoringProcessLog->status === 'down';
+
+        $emailSubject = $isDown
+            ? '🔴 Website Down Alert - ' . $monitoringProcessLog->website->name
+            : '✅ Website Recovered - ' . $monitoringProcessLog->website->name;
+
+        $emailMessage = $isDown
+            ? 'Your website ' . $monitoringProcessLog->website->name . ' is currently DOWN.'
+            : 'Your website ' . $monitoringProcessLog->website->name . ' has recovered and is back UP.';
 
         try {
             // Send notification immediately
