@@ -14,14 +14,10 @@ class MonitoringProcessLogObserver
      */
     public function created(MonitoringProcessLog $monitoringProcessLog): void
     {
-
-      if($monitoringProcessLog->status == 'down') {
-
-          // Get the client/user who owns this website
-        $client = $monitoringProcessLog->client;
-
-        MailNotificationService::notifyClient($client,$monitoringProcessLog);
-
+        // Notify client on both down and recovery (up) events
+        if (in_array($monitoringProcessLog->status, ['down', 'up'])) {
+            $client = $monitoringProcessLog->client;
+            MailNotificationService::notifyClient($client, $monitoringProcessLog);
         }
     }
 

@@ -6,21 +6,17 @@ use App\Models\Website;
 use App\Services\MonitoringService;
 use Illuminate\Support\Facades\Log;
 
-use function Laravel\Prompts\info;
-
 class WebsiteObserver
 {
     /**
      * Handle the Website "created" event.
      */
-   /**
+    /**
      * Handle the Website "created" event.
      */
     public function created(Website $website): void
     {
-
-
-        // Call the static method with required parameters
+        // Trigger an immediate check when a new website is added
         MonitoringService::checkWebsiteStatus(
             $website->url,
             $website->client_id,
