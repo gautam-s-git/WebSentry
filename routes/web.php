@@ -10,5 +10,8 @@ Route::get('/', [MonitoringController::class, 'home'])->name('home');
 // KAN-1-task-2: List all clients
 Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
 
+// KAN-1-task-3: Create a new client
+Route::post('/clients', [ClientController::class, 'store'])->name('clients.store');
+
 
 require __DIR__.'/settings.php';

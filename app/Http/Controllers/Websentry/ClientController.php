@@ -18,4 +18,22 @@ class ClientController extends Controller
             'clients' => $clients,
         ]);
     }
+
+    // KAN-1-task-3: Create a new client
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name'     => 'required|string|max:255',
+            'email'    => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8',
+            'active'   => 'boolean',
+        ]);
+
+        $validated['password'] = bcrypt($validated['password']);
+        $validated['active'] = $validated['active'] ?? true;
+
+        $client = Client::create($validated);
+
+        return redirect()->route('clients.index')->with('success', 'Client created successfully.');
+    }
 }
