@@ -46,4 +46,20 @@ class ClientController extends Controller
             'client' => $client,
         ]);
     }
+
+    // KAN-1-task-5: Update a client
+    public function update(Request $request, $id)
+    {
+        $client = Client::findOrFail($id);
+
+        $validated = $request->validate([
+            'name'   => 'sometimes|string|max:255',
+            'email'  => 'sometimes|email|unique:users,email,' . $id,
+            'active' => 'sometimes|boolean',
+        ]);
+
+        $client->update($validated);
+
+        return redirect()->route('clients.index')->with('success', 'Client updated successfully.');
+    }
 }

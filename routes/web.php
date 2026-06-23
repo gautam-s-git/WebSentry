@@ -16,5 +16,8 @@ Route::post('/clients', [ClientController::class, 'store'])->name('clients.store
 // KAN-1-task-4: Show a single client
 Route::get('/clients/{id}', [ClientController::class, 'show'])->name('clients.show');
 
+// KAN-1-task-5: Update a client
+Route::put('/clients/{id}', [ClientController::class, 'update'])->name('clients.update');
+
 
 require __DIR__.'/settings.php';
