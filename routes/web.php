@@ -26,5 +26,8 @@ Route::delete('/clients/{id}', [ClientController::class, 'destroy'])->name('clie
 // KAN-1-task-7: List all websites
 Route::get('/websites', [WebsiteController::class, 'index'])->name('websites.index');
 
+// KAN-1-task-8: Create a new website
+Route::post('/websites', [WebsiteController::class, 'store'])->name('websites.store');
+
 
 require __DIR__.'/settings.php';

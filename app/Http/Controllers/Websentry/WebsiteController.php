@@ -19,4 +19,23 @@ class WebsiteController extends Controller
             'websites' => $websites,
         ]);
     }
+
+    // KAN-1-task-8: Create a new website
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'client_id'      => 'required|exists:users,id',
+            'url'            => 'required|url|max:255',
+            'name'           => 'required|string|max:255',
+            'active'         => 'boolean',
+            'check_interval' => 'integer|min:1',
+        ]);
+
+        $validated['active'] = $validated['active'] ?? true;
+        $validated['check_interval'] = $validated['check_interval'] ?? 15;
+
+        $website = Website::create($validated);
+
+        return redirect()->route('websites.index')->with('success', 'Website added successfully.');
+    }
 }
