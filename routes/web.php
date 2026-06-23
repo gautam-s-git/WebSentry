@@ -35,5 +35,8 @@ Route::get('/websites/{id}', [WebsiteController::class, 'show'])->name('websites
 // KAN-1-task-10: Update a website
 Route::put('/websites/{id}', [WebsiteController::class, 'update'])->name('websites.update');
 
+// KAN-1-task-11: Delete a website
+Route::delete('/websites/{id}', [WebsiteController::class, 'destroy'])->name('websites.destroy');
+
 
 require __DIR__.'/settings.php';

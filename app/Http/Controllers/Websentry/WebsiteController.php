@@ -67,4 +67,13 @@ class WebsiteController extends Controller
 
         return redirect()->route('websites.index')->with('success', 'Website updated successfully.');
     }
+
+    // KAN-1-task-11: Delete a website (soft delete)
+    public function destroy($id)
+    {
+        $website = Website::findOrFail($id);
+        $website->delete();
+
+        return redirect()->route('websites.index')->with('success', 'Website removed successfully.');
+    }
 }
