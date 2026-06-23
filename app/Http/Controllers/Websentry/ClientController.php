@@ -62,4 +62,13 @@ class ClientController extends Controller
 
         return redirect()->route('clients.index')->with('success', 'Client updated successfully.');
     }
+
+    // KAN-1-task-6: Delete a client
+    public function destroy($id)
+    {
+        $client = Client::findOrFail($id);
+        $client->delete();
+
+        return redirect()->route('clients.index')->with('success', 'Client deleted successfully.');
+    }
 }
