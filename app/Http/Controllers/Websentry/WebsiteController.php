@@ -50,4 +50,21 @@ class WebsiteController extends Controller
             'website' => $website,
         ]);
     }
+
+    // KAN-1-task-10: Update a website
+    public function update(Request $request, $id)
+    {
+        $website = Website::findOrFail($id);
+
+        $validated = $request->validate([
+            'url'            => 'sometimes|url|max:255',
+            'name'           => 'sometimes|string|max:255',
+            'active'         => 'sometimes|boolean',
+            'check_interval' => 'sometimes|integer|min:1',
+        ]);
+
+        $website->update($validated);
+
+        return redirect()->route('websites.index')->with('success', 'Website updated successfully.');
+    }
 }

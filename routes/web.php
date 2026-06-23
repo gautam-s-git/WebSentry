@@ -32,5 +32,8 @@ Route::post('/websites', [WebsiteController::class, 'store'])->name('websites.st
 // KAN-1-task-9: Show a single website
 Route::get('/websites/{id}', [WebsiteController::class, 'show'])->name('websites.show');
 
+// KAN-1-task-10: Update a website
+Route::put('/websites/{id}', [WebsiteController::class, 'update'])->name('websites.update');
+
 
 require __DIR__.'/settings.php';
