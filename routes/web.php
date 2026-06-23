@@ -29,5 +29,8 @@ Route::get('/websites', [WebsiteController::class, 'index'])->name('websites.ind
 // KAN-1-task-8: Create a new website
 Route::post('/websites', [WebsiteController::class, 'store'])->name('websites.store');
 
+// KAN-1-task-9: Show a single website
+Route::get('/websites/{id}', [WebsiteController::class, 'show'])->name('websites.show');
+
 
 require __DIR__.'/settings.php';

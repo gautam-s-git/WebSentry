@@ -38,4 +38,16 @@ class WebsiteController extends Controller
 
         return redirect()->route('websites.index')->with('success', 'Website added successfully.');
     }
+
+    // KAN-1-task-9: Show a single website with its monitoring logs
+    public function show($id)
+    {
+        $website = Website::with(['client', 'monitoringLogs' => function ($q) {
+            $q->orderBy('id', 'DESC')->limit(50);
+        }])->findOrFail($id);
+
+        return Inertia::render('websentry/Websites/Show', [
+            'website' => $website,
+        ]);
+    }
 }
