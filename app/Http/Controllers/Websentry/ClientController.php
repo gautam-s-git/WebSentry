@@ -36,4 +36,14 @@ class ClientController extends Controller
 
         return redirect()->route('clients.index')->with('success', 'Client created successfully.');
     }
+
+    // KAN-1-task-4: Show a single client
+    public function show($id)
+    {
+        $client = Client::withCount('website')->findOrFail($id);
+
+        return Inertia::render('websentry/Clients/Show', [
+            'client' => $client,
+        ]);
+    }
 }
