@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Websentry\ClientController;
 use App\Http\Controllers\Websentry\MonitoringController;
+use App\Http\Controllers\Websentry\WebsiteController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -21,6 +22,9 @@ Route::put('/clients/{id}', [ClientController::class, 'update'])->name('clients.
 
 // KAN-1-task-6: Delete a client
 Route::delete('/clients/{id}', [ClientController::class, 'destroy'])->name('clients.destroy');
+
+// KAN-1-task-7: List all websites
+Route::get('/websites', [WebsiteController::class, 'index'])->name('websites.index');
 
 
 require __DIR__.'/settings.php';
